@@ -3,6 +3,8 @@ SHELL := /bin/bash
 version =  1.7.1.3
 name = airflow
 full_name = $(name)-$(version)
+#packages = all
+packages = devel,devel_hadoop,celery,crypto,jdbc,hdfs,kerberos,ldap,mysql,password,postgres,rabbitmq
 
 all: rpm
 
@@ -27,4 +29,5 @@ rpm:
 	  --define "_specdir %{_topdir}" \
 	  --define "_sourcedir  %{_topdir}/rpmbuild/SOURCES" \
 	  --define "VERSION $(version)" \
+	  --define "PACKAGES $(packages)" \
 	  -ba $(name).spec
