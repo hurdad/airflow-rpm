@@ -3,8 +3,7 @@ SHELL := /bin/bash
 version =  1.7.1.3
 name = airflow
 full_name = $(name)-$(version)
-#packages = all
-packages = devel,devel_hadoop,celery,crypto,jdbc,hdfs,kerberos,ldap,mysql,password,postgres,rabbitmq
+packages = devel,devel_hadoop,celery,crypto,jdbc,hdfs,hive,kerberos,ldap,mysql,password,postgres,rabbitmq
 
 all: rpm
 

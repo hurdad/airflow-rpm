@@ -4,12 +4,14 @@ Name:           airflow
 Version:        %{VERSION}
 Release:        1%{?dist}
 Summary:        Airflow
-Group:		System Environment/Daemons       
+Group:			System Environment/Daemons       
 License:        ASL 2.0
 URL:            https://airflow.incubator.apache.org/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildRequires:	python-devel
 BuildRequires: 	mariadb-devel
+BuildRequires:  libffi-devel 
+BuildRequires:  cyrus-sasl-devel
 BuildRequires:	gcc-c++
 BuildRequires:	python2-pip
 AutoReqProv: 	no
@@ -18,9 +20,6 @@ Packager:       Alexander Hurd <hurdad@gmail.com>
 
 %description
 Airflow is a platform to programmatically author, schedule and monitor workflows.
-
-%prep
-pip install setuptools --upgrade
 
 %install
 %{__rm} -rf %{buildroot}
