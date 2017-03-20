@@ -21,7 +21,7 @@ EnvironmentFile=/etc/sysconfig/airflow
 User=airflow
 Group=airflow
 Type=simple
-ExecStart=/bin/airflow kerberos
+ExecStart=PYTHONPATH=/usr/share/airflow/lib /bin/airflow kerberos
 Restart=on-failure
 RestartSec=5s
 

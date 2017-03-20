@@ -18,6 +18,7 @@ Wants=postgresql.service mysql.service redis.service rabbitmq-server.service
 
 [Service]
 EnvironmentFile=/etc/sysconfig/airflow
+Environment=PYTHONPATH=/usr/share/airflow/lib
 User=airflow
 Group=airflow
 Type=simple
