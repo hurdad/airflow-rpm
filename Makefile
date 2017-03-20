@@ -1,7 +1,7 @@
 # Airflow
 SHELL := /bin/bash 
 version =  1.7.1.3
-name = airflow-servver
+name = airflow
 full_name = $(name)-$(version)
 
 all: rpm
