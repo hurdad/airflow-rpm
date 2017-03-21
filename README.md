@@ -22,10 +22,10 @@ Configure Airflow version on pip
 ```
 $> cat Makefile
 ...
-version = 1.7.1.3
+version = 1.8.0
 ```
 
-## Configure Airflow Packages
+## Configure Airflow Packages as needed
 ```
 $> cat Makefile
 ...
@@ -59,7 +59,7 @@ airflow initdb
 $> exit
 ```
 
-## Airflow Services Start
+## Airflow Services Start (as needed)
 ```
 $> sudo systemctl start airflow-flower
 $> sudo systemctl start airflow-kerberos
@@ -77,7 +77,7 @@ $> sudo systemctl status airflow-webserver
 $> sudo systemctl status airflow-worker
 ```
 
-## Airflow Services Start On Boot
+## Airflow Services Start On Boot (as needed)
 ```
 $> sudo systemctl enable airflow-flower
 $> sudo systemctl enable airflow-kerberos
