@@ -37,9 +37,53 @@ packages = devel,devel_hadoop,celery,crypto,jdbc,hdfs,kerberos,ldap,mysql,passwo
 $> make
 ```
 
-## Get RPMS
+## Install RPM
 ```
-$> ls -al rpmbuild/RPMS/x86_64/
+$> sudo yum install rpmbuild/RPMS/x86_64/airflow-1.7.1.3-1.el7.centos.x86_64.rpm
+```
+
+## Airflow Init Server Configuration
+```
+$> sudo su airflow
+$> AIRFLOW_HOME=/usr/share/airflow \
+AIRFLOW_CONFIG=${AIRFLOW_HOME}/airflow.cfg \
+airflow
+$> cat /usr/share/airflow/airflow.cfg
+```
+
+## Airflow InitDB
+```
+$> AIRFLOW_HOME=/usr/share/airflow \
+AIRFLOW_CONFIG=${AIRFLOW_HOME}/airflow.cfg \
+airflow initdb
+$> exit
+```
+
+## Airflow Services Start
+```
+$> sudo systemctl start airflow-flower
+$> sudo systemctl start airflow-kerberos
+$> sudo systemctl start airflow-scheduler
+$> sudo systemctl start airflow-webserver
+$> sudo systemctl start airflow-worker
+```
+
+## Airflow Service Status
+```
+$> sudo systemctl status airflow-flower
+$> sudo systemctl status airflow-kerberos
+$> sudo systemctl status airflow-scheduler
+$> sudo systemctl status airflow-webserver
+$> sudo systemctl status airflow-worker
+```
+
+## Airflow Services Start On Boot
+```
+$> sudo systemctl enable airflow-flower
+$> sudo systemctl enable airflow-kerberos
+$> sudo systemctl enable airflow-scheduler
+$> sudo systemctl enable airflow-webserver
+$> sudo systemctl enable airflow-worker
 ```
 
 
