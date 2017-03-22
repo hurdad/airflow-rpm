@@ -1,5 +1,6 @@
 # airflow-rpm
 
+Build scripts for generating Airflow RPM files.
 Tested on CentOS 7
 
 ## Install Build Requirements
