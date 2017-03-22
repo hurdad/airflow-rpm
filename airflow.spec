@@ -31,6 +31,7 @@ Airflow is a platform to programmatically author, schedule and monitor workflows
 %{__mkdir} -p %{buildroot}/usr/lib/systemd/system/
 %{__mkdir} -p %{buildroot}/usr/bin/
 %{__mkdir} -p %{buildroot}/run/airflow/
+%{__mkdir} -p %{buildroot}/etc/logrotate.d/
 
 pip install --target %{buildroot}/usr/share/airflow/lib airflow[%{PACKAGES}]==%{VERSION}
 %{__cp} -rp %{_topdir}/systemd/airflow %{buildroot}/etc/sysconfig/
@@ -40,6 +41,11 @@ chmod 644 %{buildroot}/usr/lib/systemd/system/*
 
 %{__cp} -rp %{_topdir}/bin/airflow %{buildroot}/usr/share/airflow/bin/
 %{__cp} -rp %{_topdir}/bin/airflow.bash %{buildroot}/usr/bin/airflow
+
+%{__cp} -rp %{_topdir}/bin/gunicorn %{buildroot}/usr/share/airflow/bin/
+%{__cp} -rp %{_topdir}/bin/gunicorn.bash %{buildroot}/usr/bin/gunicorn
+
+%{__cp} -rp %{_topdir}/logrotate/* %{buildroot}/etc/logrotate.d/
 
 %pre
 if ! /usr/bin/id airflow &>/dev/null; then
@@ -51,6 +57,11 @@ fi
 systemctl daemon-reload
 
 %preun
+systemctl stop airflow-flower
+systemctl stop airflow-kerberos
+systemctl stop airflow-scheduler
+systemctl stop airflow-webserver
+systemctl stop airflow-worker
 
 %postun
 systemctl daemon-reload
@@ -71,6 +82,7 @@ fi
 /etc/tmpfiles.d/*
 /usr/lib/systemd/*
 /usr/bin/*
+/etc/logrotate.d/*
 
 %changelog
 
