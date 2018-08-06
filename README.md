@@ -48,7 +48,7 @@ $> sudo yum install rpmbuild/RPMS/x86_64/airflow-1.7.1.3-1.el7.centos.x86_64.rpm
 $> sudo su airflow
 $> AIRFLOW_HOME=/usr/share/airflow \
 AIRFLOW_CONFIG=${AIRFLOW_HOME}/airflow.cfg \
-airflow
+airflow version
 $> cat /usr/share/airflow/airflow.cfg
 ```
 

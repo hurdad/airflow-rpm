@@ -80,7 +80,7 @@ fi
 %defattr(-,root,root,-)
 /etc/sysconfig/*
 /etc/tmpfiles.d/*
-/usr/lib/systemd/*
+/usr/lib/systemd/system/*
 /usr/bin/*
 /etc/logrotate.d/*
 
